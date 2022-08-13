@@ -3,7 +3,8 @@
 Comandos:
 
 requerimientos: 
-  - pip install -r requirements.txt
+  - pip freeze > requirements.txt ### Obtener requerimientos.
+  - pip install -r requirements.txt ### Instalar los requerimientos.
 
 Windows:
   - .\env\Scripts\activate
