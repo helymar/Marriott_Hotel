@@ -83,6 +83,11 @@ def superadmindetails():
     else:
         return render_template('initial.html',titulo="Habitación z")
 
+@app.route('/profile')
+def profile():
+    form=Usuarios()
+    return render_template('edit-profile.html',form=form, titulo="Editar perfil")
+
 if __name__ == '__main__':
     app.run(debug=True)
     
