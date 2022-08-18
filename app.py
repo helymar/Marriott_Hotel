@@ -49,6 +49,11 @@ def signup():
         flash(f'Usuario {Nombres} registrado con exito!')
         return render_template('initial.html',titulo="Registro de nuevo producto")
 
+@app.route('/profile')
+def profile():
+    form=Usuarios()
+    return render_template('edit-profile.html',form=form, titulo="Editar perfil")
+
 if __name__ == '__main__':
     app.run(debug=True)
     
