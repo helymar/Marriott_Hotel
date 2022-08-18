@@ -18,7 +18,9 @@ def sql_insert_producto(id,nombre,precio,cantidad):
     con.close()
 
 def sql_signup(id,nombres,apellidos,correo,celular,username,password):
-    strsql="INSERT INTO Usuarios (Id,Nombres,Apellidos,Correo,Celular,Username,Password) VALUES(?,?,?,?,?,?,?),(id,nombres,apellidos,correo,celular,username,password);"
+    rol = 'usuario'
+    dateCreate = '2021-01-01'
+    strsql = f"INSERT INTO Usuarios (Id, Nombres, Apellidos, Celular, Correo, DateCreate, Rol, Username, Password) VALUES({id}, '{nombres}', '{apellidos}', {celular}, '{correo}', '{dateCreate}', '{rol}', '{username}', '{password}');"
     print(strsql)
     con = sql_connection()
     cursor_Obj = con.cursor()
@@ -26,8 +28,22 @@ def sql_signup(id,nombres,apellidos,correo,celular,username,password):
     con.commit()
     con.close()
 
-def sql_login():
-    return print("login")
+def sql_login(username,password):
+    strsql = f"SELECT * FROM Usuarios WHERE Username = '{username}' AND Password = '{password}'"
+    print(strsql)
+    con = sql_connection()
+    cursor_Obj = con.cursor()
+    cursor_Obj.execute(strsql)
+    datos = cursor_Obj.fetchall()
+    
+    if not datos:
+        print("Login Failed")
+        con.close()
+        return datos
+    else:
+        print("login")
+        con.close()
+        return datos[0]
 
 def sql_select_productos():
     strsql="SELECT * FROM Producto;"
