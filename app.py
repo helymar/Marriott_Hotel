@@ -29,6 +29,7 @@ def login():
     elif request.method == 'POST':
         Username = request.form["Username"]
         Password = request.form["Passsword"]
+        data = bd.sql_login(Username, Password)
         return render_template('login.html', titulo="Bienvenido")
 
 @app.route('/signup',methods=['GET', 'POST'])
