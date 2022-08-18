@@ -2,16 +2,19 @@
 {% block contenido %}
 
 <div class="container">
-  <h1>Edit Profile</h1>
+  <h1>Editar Perfil</h1>
   <hr>
   <div class="row">
     <!-- izquierda -->
     <div class="col-md-3">
       <div class="text-center">
-        <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
-        <h6>Subir foto</h6>
+        <h4>
+          Bienvenido</br>
+          {{session['username']}}
+        </h4>
+        
 
-        <input type="file" class="form-control">
+        
       </div>
     </div>
 
@@ -33,7 +36,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="col-lg-3 control-label">Company:</label>
+          <label class="col-lg-3 control-label">Celular:</label>
           <div class="col-lg-8">
             <input class="form-control" type="text" value="">
           </div>
@@ -51,13 +54,13 @@
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-3 control-label">Password:</label>
+          <label class="col-md-3 control-label">Contraseña:</label>
           <div class="col-md-8">
             <input class="form-control" type="password" value="11111122333">
           </div>
         </div>
         <div class="form-group">
-          <label class="col-md-3 control-label">Confirm password:</label>
+          <label class="col-md-3 control-label">Confirma contraseña:</label>
           <div class="col-md-8">
             <input class="form-control" type="password" value="11111122333">
           </div>
@@ -75,3 +78,4 @@
   </div>
 </div>
 <hr>
+{% endblock %}
