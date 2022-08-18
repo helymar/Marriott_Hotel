@@ -42,10 +42,11 @@ def sql_login(username,password):
     cursor_Obj = con.cursor()
     cursor_Obj.execute(strsql)
     datos = cursor_Obj.fetchall()
-    if bcrypt.check_password_hash(datos[0][8], password) == True:
-        print("login correcto")
-        con.close()
-        return datos[0]
+    if datos != []:
+        if bcrypt.check_password_hash(datos[0][8], password) == True:
+            print("login correcto")
+            con.close()
+            return datos[0]
     else:
         print("Login Failed")
         con.close()
@@ -69,14 +70,4 @@ def sql_edit_producto(id,cantidad):
     cursor_Obj.execute(strsql)
     con.commit()
     con.close()
-
-def sql_delete_producto(id):
-    strsql="DELETE FROM Producto WHERE Id = "+id+";"
-    print(strsql)
-    con = sql_connection()
-    cursor_Obj = con.cursor()
-    cursor_Obj.execute(strsql)
-    con.commit()
-    con.close()
-
 

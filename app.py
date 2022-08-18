@@ -42,7 +42,7 @@ def login():
             return redirect(url_for('inicio'))
         else:
             flash('Usuario o contraseña incorrectos')
-            return render_template('login.html',form=form,titulo="Ingresar") 
+            return redirect(url_for('login')) 
             
 @app.route('/logout')
 def logout():
@@ -74,14 +74,16 @@ def admindetails():
     if session['rol'] == 'admin':
         return render_template('details_admin.html',titulo="Habitación y")
     else:
-        return render_template('initial.html',titulo="Habitación y")
+        flash('Usted no tiene permisos para acceder a esta página')
+        return redirect(url_for('inicio'))
 
 @app.route('/superadmin-details',methods=['GET'])
 def superadmindetails():
     if session['rol'] == 'superadmin':
         return render_template('details_superadmin.html',titulo="Habitación z")
     else:
-        return render_template('initial.html',titulo="Habitación z")
+        flash('Usted no tiene permisos para acceder a esta página')
+        return redirect(url_for('inicio'))
 
 @app.route('/profile')
 def profile():
